@@ -43,7 +43,7 @@ O projeto EmpreGO é uma plataforma para auxiliar na busca e divulgação de opo
 ![FLASK](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 
 ## Autores
-- Mariana Meirelles de Campos - [GitHub](https://github.com/MDomantunes/Projeto-EmpreGO1.git) - maria.domantunes.senai@gmail.com
+- Mariana Meirelles de Campos - [GitHub](https://github.com/marianacamposss/Projeto-EmpreGO.git) - camposmariana3.a@gmail.com
 
 ## Licença
 Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.
