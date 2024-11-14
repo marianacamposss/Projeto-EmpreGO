@@ -1,0 +1,19 @@
+body{
+    min-height:100vh ;
+}
+
+.logo {
+    transition: transform 0.3s ease-in-out; 
+  }
+  
+  .logo:hover {
+    transform: scale(1.2); 
+  }
+  
+  .card {
+    transition: transform 0.3s ease-in-out; 
+  }
+  
+  .card:hover {
+    transform: scale(1.1); 
+  }
