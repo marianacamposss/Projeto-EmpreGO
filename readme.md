@@ -3,7 +3,7 @@
 # EmpreGO
 
 **Descrição:**  
-O projeto EmpreGO é uma plataforma para auxiliar na busca e divulgação de oportunidades de emprego na cidade de Itapeva-SP. Ele visa facilitar a conexão entre empresas e candidatos, promovendo a visualização e gerenciamento de vagas disponíveis na região.
+O projeto EmpreGO é um site criar para otimizar na busca e divulgação de oportunidades de emprego. Ele procura facilitar a conexão entre empresas e candidatos, mostrando a visualização e gerenciamento de vagas disponíveis na região.
 
 ## Índice
 * [Tecnologias](#tecnologias-utilizadas)
