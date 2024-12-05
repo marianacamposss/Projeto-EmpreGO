@@ -1,47 +1,83 @@
 {% extends "base.html" %}
 
-{% block title %}EmpreGO! - Cadastrar Vaga{% endblock %}
+{% block title %}EmpreGO! - Cadastrar Empresa{% endblock %}
 
 {% block content %}
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1>Cadastrar Nova empresa</h1>
+            <h1>Cadastrar nova Empresa</h1>
 
-            {% if msg_erro %}  <!-- Exibe mensagem de erro, se houver -->
-                <div class="alert alert-danger" role="alert">
-                    {{ msg_erro }}
-                </div>
+            {% if msg_erro %} <!-- Exibe mensagem de erro, se houver -->
+            <div class="alert alert-danger" role="alert">
+                {{ msg_erro }}
+            </div>
             {% endif %}
 
-            <form action="/cadastrar_empresa" method="post">
+            <form id="form" action="/cadastrar_empresa" method="post" class="needs-validation" novalidate>
                 <div class="mb-3">
-                    <label for="titulo" class="form-label">Nome fantasia</label>
-                    <input type="text" class="form-control" id="titulo" name="nome_empresa" placeholder="Nome" required>
+                    <label for="titulo" class="form-label">Nome da empresa</label>
+                    <input type="text" class="form-control" id="titulo" name="nome_empresa" required>
+                    <div class="invalid-feedback">O nome da empresa é obrigatório.</div>
                 </div>
+
                 <div class="mb-3">
-                    <label for="cnpj">CNPJ</label> <br>
-                    <input type="text" class="form-control" name="cnpj" maxlength="14" placeholder="Somente números" required> 
-                  </div>
+                    <label for="cnpj" class="form-label">CNPJ</label>
+                    <input type="text" id="cnpj" class="form-control" name="cnpj" required>
+                    <div class="invalid-feedback">CNPJ inválido. Use o formato XX.XXX.XXX/XXXX-XX.</div>
+                </div>
+
                 <div class="mb-3">
-                    <label for="cnpj">Telefone</label> <br>
-                    <input type="text" class="form-control" name="telefone" maxlength="11" placeholder="Somente números" required> 
-                  </div>
-                  <h2>Informações para acesso da plataforma</h2>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">E-mail</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Insira seu e-mail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="senha" class="form-label">Senha</label>
-                        <input type="password" class="form-control" id="senha" name="senha" placeholder="Insira sua senha" required> <br>
+                    <label for="telefone" class="form-label">Telefone</label>
+                    <input type="text" id="telefone" class="form-control" name="telefone" required>
+                    <div class="invalid-feedback">Telefone inválido. Use o formato (XX) XXXXX-XXXX.</div>
+                </div>
+
+                <h2>Informações para acesso da plataforma</h2>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" id="email" class="form-control" name="email" required>
+                    <div class="invalid-feedback">Insira um e-mail válido.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" id="senha" class="form-control" name="senha" required>
+                    <div class="invalid-feedback">A senha é obrigatória.</div>
+                </div>
+
                 <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Cadastrar Vaga</button>
+                    <button type="submit" class="btn btn-info">Cadastrar Empresa</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
+<!-- Script do Bootstrap para validação -->
+<script>
+    (() => {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+
+<script>
+    Inputmask("99.999.999/9999-99").mask(document.getElementById("cnpj")); // Máscara para CNPJ
+    Inputmask("(99) 99999-9999").mask(document.getElementById("telefone")); // Máscara para Telefone
+</script>
 {% endblock %}

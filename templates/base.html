@@ -12,16 +12,17 @@
   </head>
 
   <body class="d-flex flex-column">
+    <div class="d-none d-md-block">
     {% include "header.html" %}
-
+    </div>
     <main class="container mt-5 flex-fill">
       {% block content %} {% endblock %}
     </main>
     <br>
     <footer>
       {% include "footer.html" %}
-      </div>
     </footer>
+    
 
 
     <script src="../static/bootstrap/js/bootstrap.js"></script>

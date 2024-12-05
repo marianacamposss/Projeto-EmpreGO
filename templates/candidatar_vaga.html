@@ -1,0 +1,101 @@
+{% extends "base.html" %} {% block title %}EmpreGO! - Candidatar-se{% endblock
+%} {% block content %}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h1>Candidatar-se</h1>
+
+      {% if msg_erro %}
+      <div class="alert alert-danger" role="alert">{{ msg_erro }}</div>
+      {% endif %}
+
+      <form
+        action="/candidatar_vaga/{{id_vaga}}"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Nome completo</label>
+          <input
+            type="text"
+            class="form-control"
+            id="titulo"
+            name="nome_candidato"
+            placeholder="Nome"
+            required
+          />
+          <div class="valid-feedback">Informação válida</div>
+          <div class="invalid-feedback">Preencha os campos.</div>
+        </div>
+        <div class="mb-3">
+          <label for="cnpj">email</label> <br />
+          <input type="text" class="form-control" name="email" required />
+          <div class="valid-feedback">Informação válida</div>
+          <div class="invalid-feedback">Preencha os campos.</div>
+        </div>
+        <div class="mb-3">
+          <label for="telefone">Telefone</label> <br />
+          <input
+            type="text"
+            class="form-control"
+            id="telefone"
+            name="telefone"
+            placeholder="Somente números"
+            required
+          />
+          <div class="valid-feedback">Informação válida</div>
+          <div class="invalid-feedback">Preencha os campos.</div>
+        </div>
+        <div class="upload-container">
+          <div class="mb-3">
+            <label for="file" class="form-label">Envie seu currículo</label>
+            <input
+              type="file"
+              class="form-control"
+              name="curriculo"
+              id="file"
+              accept="application/pdf"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-info btn-lg">
+            Enviar currículo
+          </button>
+        </div>
+        {% if msg %}
+        <div class="mensagem">
+          <p>{{ msg }}</p>
+        </div>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    "use strict";
+    const forms = document.querySelectorAll(".needs-validation");
+
+    Array.from(forms).forEach((form) => {
+      form.addEventListener(
+        "submit",
+        (event) => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+<script>
+  Inputmask("(99) 99999-9999").mask(document.getElementById("telefone")); // Máscara para Telefone
+</script>
+
+{% endblock %}
