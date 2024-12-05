@@ -18,12 +18,17 @@
           <td>{{ candidato.nome_candidato }}</td>
           <td>{{ candidato.email }}</td>
           <td>{{ candidato.telefone }}</td>
-          <td class="text-center">
+          <td class="">
             <a
               href="/download/{{ candidato.curriculo }}"
               class="btn btn-success btn-sm"
               >Baixar</a
             >
+            <a
+            href="/delete/{{ candidato.curriculo }}"
+            class="btn btn-danger btn-sm"
+            >excluir</a
+          >
           </td>
         </tr>
         {% else %}

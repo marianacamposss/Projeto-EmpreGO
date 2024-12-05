@@ -317,6 +317,10 @@ def ver_candidatos(id_vaga):
 def not_found(error):
     return render_template('erro404.html'), 404
 
+#confirmação
+@app.route('/sucesso')
+def sucesso():
+    return render_template('sucesso.html')
 #ROTA DE BUSCA
 @app.route('/buscar', methods=['GET'])
 def buscar_vagas():
@@ -602,7 +606,7 @@ def candidatar_vaga(id_vaga):
             comandoSQL = "INSERT INTO candidato (nome_candidato, email, telefone, curriculo, id_vaga) VALUES (%s,%s,%s,%s,%s)"
             cursor.execute(comandoSQL, (nome_candidato, email, telefone, nome_arquivo, id_vaga))
             conexao.commit()
-            return redirect('/')
+            return redirect('/sucesso')
         except Error as erro:
              return f"ERRO! Erro de Banco de Dados: {erro}"
         except Exception as erro:
@@ -621,7 +625,7 @@ def delete_file(filename):
         os.remove(file_path)  # Exclui o arquivo
 
         conexao, cursor = conectar_db()
-        comandoSQL = "DELETE FROM arquivo WHERE nome_arquivo = %s"
+        comandoSQL = "DELETE FROM candidato WHERE curriculo = %s"
         cursor.execute(comandoSQL, (filename,))
         conexao.commit()
 
