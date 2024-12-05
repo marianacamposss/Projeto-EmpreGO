@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Erro 404 - Página Não Encontrada{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <div class="image-placeholder my-4">
+        <img src="/static/erro404/erro404.avif" alt="Erro 404" style="max-width: 300px; width: 100%; height: auto;">
+    </div>
+    <p class="lead">A página que você está procurando não foi encontrada.</p>
+    <p><a href="/" class="btn btn-primary">Voltar para a página inicial</a></p>
+</div>
+{% endblock %}

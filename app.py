@@ -278,19 +278,45 @@ def excluir_empresa(id_empresa):
 
 @app.route('/candidatos/<int:id_vaga>')
 def ver_candidatos(id_vaga):
+    # Verificar se há sessão ativa
+    if not session or 'id_empresa' not in session:
+        return redirect('/login')
+    
+    id_empresa_logada = session['id_empresa']
+    
     try:
         conexao, cursor = conectar_db()
+        
+        # Verificar se a vaga pertence à empresa logada
         comandoSQL = '''
-        SELECT * FROM candidato WHERE id_vaga = %s
+        SELECT id_empresa FROM vaga WHERE id_vaga = %s;
+        '''
+        cursor.execute(comandoSQL, (id_vaga,))
+        vaga = cursor.fetchone()
+        
+        if not vaga or vaga['id_empresa'] != id_empresa_logada:
+            return "Acesso negado: você não tem permissão para visualizar os candidatos desta vaga.", 403
+
+        # Recuperar os candidatos da vaga
+        comandoSQL = '''
+        SELECT * FROM candidato WHERE id_vaga = %s;
         '''
         cursor.execute(comandoSQL, (id_vaga,))
         candidatos = cursor.fetchall()
+        
         return render_template('candidatos.html', candidatos=candidatos)
-    except mysql.connector.Error as erro:
-        return f"Erro de banco de Dados: {erro}"
-    except Exception as erro:
-        return f"Erro de back-end: {erro}"
     
+    except Error as erro:
+        return f"Erro de Banco de Dados: {erro}"
+    except Exception as erro:
+        return f"Erro de Back-end: {erro}"
+    finally:
+        encerrar_db(cursor, conexao)
+
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('erro404.html'), 404
+
 #ROTA DE BUSCA
 @app.route('/buscar', methods=['GET'])
 def buscar_vagas():
@@ -327,7 +353,6 @@ def buscar_vagas():
         return f"ERRO! Outros erros: {erro}"
     finally:
         encerrar_db(cursor, conexao)
-
 
 #ROTA DA PÁGINA DE GESTÃO DAS EMPRESAS
 @app.route('/empresa')
@@ -584,6 +609,10 @@ def candidatar_vaga(id_vaga):
             return f"ERRO! Outros erros: {erro}"
         finally:
              encerrar_db(cursor, conexao)
+#download
+@app.route('/download/<filename>')
+def download(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment = True)
 
 @app.route('/delete/<filename>')
 def delete_file(filename):
@@ -603,10 +632,7 @@ def delete_file(filename):
         return f"Erro de back-end: {erro}"
     finally:
         encerrar_db(conexao, cursor)
-        
-@app.route('/download/<filename>')
-def download(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename, as_attachment=True)
+
 
 
 #ROTA PARA LOGOUT (ENCERRA AS SESSÕES)

@@ -46,5 +46,4 @@ O projeto EmpreGO é um site criar para otimizar na busca e divulgação de opor
 - Mariana Meirelles de Campos - [GitHub](https://github.com/marianacamposss/Projeto-EmpreGO.git) - camposmariana3.a@gmail.com
 
 ## Licença
-Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para mais detalhes.
-"""
+Este projeto está licenciado sob a Licença MIT.
