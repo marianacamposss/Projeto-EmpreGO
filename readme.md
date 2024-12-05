@@ -37,7 +37,7 @@ O projeto EmpreGO é um site criar para otimizar na busca e divulgação de opor
   - Editar informações da vaga.
   ![image](/static/readme/editar.png)
   -Excluir vagas cadastradas.
-  ![image](/static/readme/editar.png)
+  ![image](/static/readme/excluir.png)
   - Visualizar currículos recebidos para as vagas.
   ![image](/static/readme/lista_candidatos.png)
 
