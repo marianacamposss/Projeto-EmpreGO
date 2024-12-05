@@ -10,7 +10,7 @@
           <th>Email</th>
           <th>Telefone</th>
           <th class="text-center">Currículo</th>
-        </tr>
+        </tr>   
       </thead>
       <tbody>
         {% for candidato in candidatos %}
@@ -25,10 +25,10 @@
               >Baixar</a
             >
             <a
-            href="/delete/{{ candidato.curriculo }}"
-            class="btn btn-danger btn-sm"
-            >excluir</a
-          >
+              href="/delete/{{ candidato.curriculo }}"
+              class="btn btn-danger btn-sm"
+              >excluir</a
+            >
           </td>
         </tr>
         {% else %}

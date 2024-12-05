@@ -281,19 +281,15 @@ def ver_candidatos(id_vaga):
     # Verificar se há sessão ativa
     if not session or 'id_empresa' not in session:
         return redirect('/login')
-    
     id_empresa_logada = session['id_empresa']
-    
     try:
         conexao, cursor = conectar_db()
-        
         # Verificar se a vaga pertence à empresa logada
         comandoSQL = '''
         SELECT id_empresa FROM vaga WHERE id_vaga = %s;
         '''
         cursor.execute(comandoSQL, (id_vaga,))
         vaga = cursor.fetchone()
-        
         if not vaga or vaga['id_empresa'] != id_empresa_logada:
             return "Acesso negado: você não tem permissão para visualizar os candidatos desta vaga.", 403
 

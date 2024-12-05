@@ -18,19 +18,33 @@ O projeto EmpreGO é um site criar para otimizar na busca e divulgação de opor
 ## Funcionalidades
 - **Usuários/Visitantes:**
   - Visualizar vagas disponíveis.
+  ![image](/static/readme/visualizar%20vagas.png)
+
   - Pesquisar vagas por palavras-chave.
+  ![image](/static/readme/pesquisar.png)
+
   - Enviar currículo para uma vaga específica.
-  
+  ![image](/static/readme/candidatar.png)
+
+
+
 - **Empresas:**
   - Cadastrar-se e fazer login.
+  ![image](/static/readme/login.png)
+
   - Cadastrar novas vagas de emprego.
-  - Editar informações e excluirvaga s cadastradas.
+  ![image](/static/readme/cadastrar%20vaga.png)
+  - Editar informações da vaga.
+  ![image](/static/readme/editar.png)
+  -Excluir vagas cadastradas.
+  ![image](/static/readme/editar.png)
   - Visualizar currículos recebidos para as vagas.
-  
+  ![image](/static/readme/lista_candidatos.png)
+
 - **Administrador:**
-  - Adicionar, editar ou excluir empresas.
-  - Gerenciar status das empresas (habilitar/desabilitar).
-  - Gerenciar vagas (criar, editar, excluir, habilitar/desabilitar).
+  - Adicionar, editar, excluir e alterar status das empresas.
+  ![image](/static/readme/paineladm.png)
+  
 
 ## Tecnologias Utilizadas
 **Linguagem/Frameworks:**
