@@ -638,7 +638,6 @@ def delete_file(filename):
         encerrar_db(conexao, cursor)
 
 
-
 #ROTA PARA LOGOUT (ENCERRA AS SESSÕES)
 @app.route('/logout')
 def logout():
